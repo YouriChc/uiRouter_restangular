@@ -1,11 +1,16 @@
-angular.module('cycleoflifeApp', ['ui.router'])
+angular.module('cycleoflifeApp', ['ui.router', 'restangular'])
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/birth');
 
     $stateProvider
       .state('birth', {
         url: '/birth',
-        template: '<div>You are borned<br><button ui-sref="birth.childhood">childhood</button><div ui-view></div></div>',
+        template: '<div>Using FOAAS {{restController.version.message}}</div><div>You are borned<br><button ui-sref="birth.childhood">childhood</button><div ui-view></div></div>',
+        controller: function($scope, Restangular){
+          _.contains = _.includes;
+          Restangular.setBaseUrl('http://foaas.com');
+          $scope.version = Restangular.oneUrl('version').get();
+        }
       })
       .state('birth.childhood', {
         url: '/childhood',
