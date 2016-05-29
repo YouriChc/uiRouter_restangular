@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>uiRoutter</title>
+  </head>
+<body ng-app="cycleoflifeApp">
+  <!-- index.html -->
+
+  <div ui-view>
+    NOTHING
+  </div>
+  <!-- We'll also add some navigation: -->
+  <a ui-sref="/inbox">inbox</a>
+  <a ui-sref="/inbox/10">starred</a>
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.0/angular-ui-router.js"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.3.1/restangular.min.js"></script>
+  <script type="text/javascript" src="js/uiRouter.js"></script>
+  <script type="text/javascript" src="js/lodash.js"></script>
+
+</body>
+</html>
