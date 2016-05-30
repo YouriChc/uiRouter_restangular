@@ -31,7 +31,17 @@ angular.module('cycleoflifeApp', ['ui.router', 'restangular'])
       })
       .state('birth.childhood.career', {
         url: '/career',
-        template: '<div>GoodLuck !<br><button ui-sref=".workinglife">workinglife</button><div ui-view></div></div>'
+        template: '<div>{{fuck.message}} GoodLuck !<br><button ui-sref=".workinglife">workinglife</button><div ui-view></div></div>',
+        controller: function($scope, foaas){
+          $scope.fuck = foaas;
+        },
+        resolve: {
+          foaas: function(Restangular){
+            _.contains = _.includes;
+            Restangular.setBaseUrl('http://foaas.com');
+            return Restangular.one('you', 'study').one('Career').get()
+          }
+        }
       });
 
 
