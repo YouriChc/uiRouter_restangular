@@ -6,10 +6,15 @@ angular.module('cycleoflifeApp', ['ui.router', 'restangular'])
       .state('birth', {
         url: '/birth',
         template: '<div>Using FOAAS {{version.message}}</div><div>You are borned<br><button ui-sref="birth.childhood">childhood</button><div ui-view></div></div>',
-        controller: function($scope, Restangular){
-          _.contains = _.includes;
-          Restangular.setBaseUrl('http://foaas.com');
-          $scope.version = Restangular.oneUrl('version').get();
+        controller: function($scope, foaas){
+          $scope.version = foaas;
+        },
+        resolve: {
+          foaas: function(Restangular){
+            _.contains = _.includes;
+            Restangular.setBaseUrl('http://foaas.com');
+            return Restangular.oneUrl('version').get();
+          }
         }
       })
       .state('birth.childhood', {
