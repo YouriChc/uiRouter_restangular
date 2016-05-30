@@ -5,7 +5,7 @@ angular.module('cycleoflifeApp', ['ui.router', 'restangular'])
     $stateProvider
       .state('birth', {
         url: '/birth',
-        template: '<div>Using FOAAS {{restController.version.message}}</div><div>You are borned<br><button ui-sref="birth.childhood">childhood</button><div ui-view></div></div>',
+        template: '<div>Using FOAAS {{version.message}}</div><div>You are borned<br><button ui-sref="birth.childhood">childhood</button><div ui-view></div></div>',
         controller: function($scope, Restangular){
           _.contains = _.includes;
           Restangular.setBaseUrl('http://foaas.com');
